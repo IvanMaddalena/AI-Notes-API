@@ -1,6 +1,8 @@
+
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app import crud, schemas
+from app.ai import summarize_note_with_ai
 from app.database import SessionLocal
 
 router = APIRouter()
@@ -52,3 +54,10 @@ def delete_note(note_id: int, db: Session = Depends(get_db)):
         raise HTTPException(status_code=404, detail="Note not found")
     return deleted
 
+@router.post("/notes/{note_id}/summarize")
+def summarize_note(note_id: int, db: Session = Depends(get_db)):
+    note = crud.get_note_by_id(db, note_id)
+    if not note:
+        raise HTTPException(status_code=404, detail="Note not found")
+    summary = summarize_note_with_ai(note.content)
+    return {"note_id": note.id, "summary": summary}

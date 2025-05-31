@@ -1,7 +1,7 @@
 # 🧠 AI Notes API
 
 A full-featured backend for managing and summarizing user notes using **FastAPI**, **SQLite**, and **Large Language Models (LLMs)** like *Mistral 7B*.  
-Built with scalability and developer experience in mind. ✨
+Built with scalability and developer experience in mind. 
 
 ---
 

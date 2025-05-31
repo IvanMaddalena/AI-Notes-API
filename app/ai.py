@@ -12,7 +12,7 @@ def summarize_note_with_ai(content: str) -> str:
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "mistral/mistral-7b-instruct",  # Puoi cambiarlo
+        "model": "mistral/mistral-7b-instruct",  # It can be changed
         "messages": [
             {"role": "system", "content": "You are a helpful assistant that summarizes notes."},
             {"role": "user", "content": f"Summarize this note: {content}"}
